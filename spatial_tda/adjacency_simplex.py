@@ -33,7 +33,11 @@ class AdjacencySimplex:
         if self.filter_method == 'up':
             gdf = gdf.sort_values(by=self.variable, ascending=True)
         elif self.filter_method == 'down':
-            gdf = gdf.sort_values(by=self.variable, ascending=False)
+            # get the max value
+            max_value = gdf[self.variable].max()
+            # invert the values - Assuming negative values are not present
+            gdf[self.variable] = max_value - gdf[self.variable]
+            gdf = gdf.sort_values(by=self.variable, ascending=True)
         else:
             raise ValueError("Invalid filter method. Use 'up' or 'down'.")
         
