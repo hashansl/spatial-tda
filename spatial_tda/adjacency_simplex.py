@@ -1,6 +1,6 @@
 import geopandas as gpd
 import pandas as pd
-import utills.invr as invr
+import invr as invr
 
 class AdjacencySimplex:
     """
