@@ -104,4 +104,4 @@ ENV/
 .mypy_cache/
 
 # IDE settings
-.vscode/
+.vscode/.DS_Store
