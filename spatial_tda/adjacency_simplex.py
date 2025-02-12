@@ -56,7 +56,7 @@ class AdjacencySimplex:
 
         self.filtered_df = filtered_df
 
-        # this reurns a filtered dataframe and the original dataframe with the sortedID
+        # this returns a filtered dataframe and the original dataframe with the sortedID
         return filtered_df, gdf
 
     def calculate_adjacent_countries(self):
