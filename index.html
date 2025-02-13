@@ -352,6 +352,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geospatial-data-processing-and-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geospatial Data Processing and Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-computation-and-simplicial-complex-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency Computation and Simplicial Complex Construction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-homology-and-topological-summaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent Homology and Topological Summaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficient-computational-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Efficient Computational Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -749,6 +791,48 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Key Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geospatial-data-processing-and-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Geospatial Data Processing and Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjacency-computation-and-simplicial-complex-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Adjacency Computation and Simplicial Complex Construction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#persistent-homology-and-topological-summaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Persistent Homology and Topological Summaries
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#efficient-computational-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Efficient Computational Design
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -839,64 +923,38 @@
 <!-- Check out this excellent article on Medium - [Leafmap a new Python Package for Geospatial data science](https://link.medium.com/HRRKDcynYgb) -->
 
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
-<p>Leafmap offers a wide range of features and capabilities that empower geospatial data scientists, researchers, and developers to unlock the potential of their data. Some of the key features include:</p>
+<p>The <strong>AdjacencySimplex</strong> class and the <strong>compute_persistence</strong> function provide a comprehensive framework for processing geospatial data, constructing simplicial complexes, and performing topological data analysis (TDA). These functionalities enable the study of spatial structures and relationships with a focus on <strong>spatial adjacency, simplicial complexes, and persistent homology</strong>. The key features include:  </p>
+<h3 id="geospatial-data-processing-and-filtering"><strong>Geospatial Data Processing and Filtering</strong><a class="headerlink" href="#geospatial-data-processing-and-filtering" title="Permanent link">&para;</a></h3>
 <ul>
-<li>
-<p><strong>Creating an interactive map with just one line of code:</strong> Leafmap makes it easy to create an interactive map by providing a simple API that allows you to load and visualize geospatial datasets with minimal coding.</p>
-</li>
-<li>
-<p><strong>Switching between different mapping backends:</strong> Leafmap supports multiple mapping backends, including ipyleaflet, folium, kepler.gl, pydeck, and bokeh. You can switch between these backends to create maps with different visualization styles and capabilities.</p>
-</li>
-<li>
-<p><strong>Changing basemaps interactively:</strong> Leafmap allows you to change basemaps interactively, providing a variety of options such as OpenStreetMap, Stamen Terrain, CartoDB Positron, and many more.</p>
-</li>
-<li>
-<p><strong>Adding XYZ, WMS, and vector tile services:</strong> You can easily add XYZ, WMS, and vector tile services to your map, allowing you to overlay additional geospatial data from various sources.</p>
-</li>
-<li>
-<p><strong>Displaying vector data:</strong> Leafmap supports various vector data formats, including Shapefile, GeoJSON, GeoPackage, and any vector format supported by GeoPandas. You can load and display vector data on the map, enabling you to visualize and analyze spatial features.</p>
-</li>
-<li>
-<p><strong>Displaying raster data:</strong> Leafmap allows you to load and display raster data, such as GeoTIFFs, on the map. This feature is useful for visualizing satellite imagery, digital elevation models, and other gridded datasets.</p>
-</li>
-<li>
-<p><strong>Creating custom legends and colorbars:</strong> Leafmap provides tools for customizing legends and colorbars on the map, allowing you to represent data values with different colors and corresponding labels.</p>
-</li>
-<li>
-<p><strong>Creating split-panel maps and linked maps:</strong> With Leafmap, you can create split-panel maps to compare different datasets side by side. You can also create linked maps that synchronize interactions between multiple maps, providing a coordinated view of different spatial data.</p>
-</li>
-<li>
-<p><strong>Downloading and visualizing OpenStreetMap data:</strong> Leafmap allows you to download and visualize OpenStreetMap data, providing access to detailed street maps, buildings, and other points of interest.</p>
-</li>
-<li>
-<p><strong>Creating and editing vector data interactively:</strong> Leafmap includes tools for creating and editing vector data interactively on the map. You can draw points, lines, and polygons, and modify them as needed.</p>
-</li>
-<li>
-<p><strong>Searching for geospatial data:</strong> Leafmap provides functionality for searching and accessing geospatial data from sources such as SpatialTemporal Asset Catalogs (STAC), Microsoft Planetary Computer, AWS Open Data Registry, and OpenAerialMap.</p>
-</li>
-<li>
-<p><strong>Inspecting pixel values interactively:</strong> Leafmap allows you to interactively inspect pixel values in raster datasets, helping you analyze and understand the data at a more granular level.</p>
-</li>
-<li>
-<p><strong>Creating choropleth maps and heat maps:</strong> Leafmap supports the creation of choropleth maps, where colors represent different data values for specific geographic areas. You can also create heat maps to visualize data density.</p>
-</li>
-<li>
-<p><strong>Displaying data from a PostGIS database:</strong> Leafmap provides tools for connecting to a PostGIS database and displaying spatial data stored in the database on the map.</p>
-</li>
-<li>
-<p><strong>Creating time series animations:</strong> Leafmap enables the creation of time series animations from both vector and raster data, allowing you to visualize temporal changes in your geospatial datasets.</p>
-</li>
-<li>
-<p><strong>Analyzing geospatial data with whitebox:</strong> Leafmap integrates with WhiteboxTools and whiteboxgui, providing a suite of geospatial analyses, such as hydrological analysis, terrain analysis, and LiDAR processing.</p>
-</li>
-<li>
-<p><strong>Segmenting and classifying remote sensing imagery:</strong> Leafmap integrates the segment-geospatial package, which provides tools for segmenting and classifying remote sensing imagery using deep learning algorithms.</p>
-</li>
-<li>
-<p><strong>Building interactive web apps:</strong> Leafmap supports the development of interactive web applications using frameworks like Voila, Streamlit, and Solara. This allows you to share your geospatial analyses and visualizations with others in a user-friendly web interface.</p>
-</li>
+<li><strong>Filtering and sorting geospatial data:</strong> The class enables filtering and sorting a GeoDataFrame based on a specified variable. Sorting methods include ascending and descending orders.  </li>
+<li><strong>Threshold-based filtering:</strong> Users can define minimum and maximum thresholds to focus on specific data ranges.  </li>
+<li><strong>Geospatial integrity maintenance:</strong> The framework ensures that processed data retains its <strong>geometric properties and CRS</strong> for further spatial analysis.  </li>
 </ul>
-<p>These features and capabilities make leafmap a powerful tool for geospatial data exploration, analysis, and visualization. Whether you are a beginner or an experienced geospatial data scientist, leafmap provides an accessible and efficient way to work with geospatial data in Python.</p>
+<h3 id="adjacency-computation-and-simplicial-complex-construction"><strong>Adjacency Computation and Simplicial Complex Construction</strong><a class="headerlink" href="#adjacency-computation-and-simplicial-complex-construction" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Computing adjacency relationships:</strong> The class uses spatial joins to identify neighboring geographic entities while removing self-intersections.  </li>
+<li><strong>Creating adjacency dictionaries:</strong> The adjacency relationships are stored in a dictionary format, making them easy to use for further computations.  </li>
+<li><strong>Generating simplicial complexes:</strong> The class constructs <strong>Vietoris-Rips simplicial complexes</strong> using adjacency relationships, enabling higher-order topological analysis.  </li>
+</ul>
+<h3 id="persistent-homology-and-topological-summaries"><strong>Persistent Homology and Topological Summaries</strong><a class="headerlink" href="#persistent-homology-and-topological-summaries" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Computing persistence diagrams:</strong> The <strong>compute_persistence</strong> function constructs a <strong>Simplex Tree</strong> using <strong>Gudhi</strong>, assigning filtration values based on the input variable.  </li>
+<li><strong>Extracting H0 features (connected components):</strong> The function calculates <strong>zero-dimensional (H0) persistence intervals</strong>, representing connected components in the dataset.  </li>
+<li><strong>Handling infinite persistence values:</strong> Infinite intervals are replaced with the <strong>maximum variable value</strong> to ensure finite computations.  </li>
+<li><strong>Topological summaries (TDA metrics):</strong> The function computes essential TDA summaries for dimension 0, including:  </li>
+<li><strong>H0 data points:</strong> The number of connected components.  </li>
+<li><strong>Total Lifespan (TL):</strong> The sum of persistence intervals.  </li>
+<li><strong>Average Lifespan (AL):</strong> The mean lifespan of connected components.  </li>
+<li><strong>Total Mid-Lifespan (TML):</strong> The sum of midpoints of persistence intervals.  </li>
+<li><strong>Average Mid-Lifespan (AML):</strong> The average of midpoints of persistence intervals.  </li>
+</ul>
+<h3 id="efficient-computational-design"><strong>Efficient Computational Design</strong><a class="headerlink" href="#efficient-computational-design" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Optimized spatial computations:</strong> The class efficiently processes adjacency relationships, even for large datasets.  </li>
+<li><strong>Integration with Pandas, GeoPandas, and Gudhi:</strong> The framework seamlessly works with popular Python libraries for geospatial and topological data analysis.  </li>
+<li><strong>Dynamic variable selection:</strong> Users can select any <strong>numerical attribute</strong> to control filtering and sorting.  </li>
+</ul>
+<p>These features make the <strong>AdjacencySimplex</strong> class and <strong>compute_persistence</strong> function <strong>powerful tools for geospatial topological data analysis</strong>, helping researchers explore <strong>spatial connectivity, adjacency structures, and persistent homology in geospatial datasets</strong>. Whether for <strong>epidemiology, environmental studies, urban planning, or regional connectivity analysis</strong>, this framework provides an intuitive and structured approach to <strong>spatial TDA</strong>.</p>
 <h2 id="citations">Citations<a class="headerlink" href="#citations" title="Permanent link">&para;</a></h2>
 <p>If you find <strong>spatial-tda</strong> useful in your research, please consider citing the following paper to support my work. Thank you for your support.</p>
 <!-- -   Wu, Q. (2021). Leafmap: A Python package for interactive mapping and geospatial analysis with minimal coding in a Jupyter environment. _Journal of Open Source Software_, 6(63), 3414. <https://doi.org/10.21105/joss.03414> -->
@@ -925,7 +983,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-13T23:38:47+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-13T23:49:25+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-13</span>
   </span>
 
     
