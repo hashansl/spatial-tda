@@ -3,3 +3,5 @@
 __author__ = """Hashan Fernando"""
 __email__ = "hashan.dan@gmail.com"
 __version__ = "0.0.7"
+
+from .adjacency_simplex import *
