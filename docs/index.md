@@ -15,6 +15,7 @@
 [![image](https://img.shields.io/badge/YouTube-Channel-red)](https://youtube.com/@giswqs)
 [![status](https://joss.theoj.org/papers/10.21105/joss.03414/status.svg)](https://doi.org/10.21105/joss.03414) -->
 
+[![image](https://img.shields.io/pypi/v/spatial-tda.svg)](https://pypi.python.org/pypi/spatial-tda)
 [![logo](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)
 
 **A Python package for geospatial analysis and interactive mapping in a Jupyter environment.**
@@ -86,10 +87,4 @@ These features make the **AdjacencySimplex** class and **compute_persistence** f
 ## Citations
 
 If you find **spatial-tda** useful in your research, please consider citing the following paper to support my work. Thank you for your support.
-
-<!-- -   Wu, Q. (2021). Leafmap: A Python package for interactive mapping and geospatial analysis with minimal coding in a Jupyter environment. _Journal of Open Source Software_, 6(63), 3414. <https://doi.org/10.21105/joss.03414> -->
-
-## Demo
-
-<!-- ![](https://assets.gishub.org/images/leafmap_demo.gif) -->
 
