@@ -84,3 +84,5 @@ nav:
     - API Reference:
           - spatial_tda module: spatial_tda.md
           - common module: common.md
+          - adjacency_simplex: adjacency_simplex.md
+          
