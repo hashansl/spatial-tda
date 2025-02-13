@@ -15,7 +15,7 @@
 [![image](https://img.shields.io/badge/YouTube-Channel-red)](https://youtube.com/@giswqs)
 [![status](https://joss.theoj.org/papers/10.21105/joss.03414/status.svg)](https://doi.org/10.21105/joss.03414) -->
 
-[![logo](https://github.com/hashansl/spatial-tda/blob/main/docs/assets/logo.png)](https://github.com/hashansl/spatial-tda/blob/main/docs/assets/logo.png)
+[![logo](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)
 
 **A Python package for geospatial analysis and interactive mapping in a Jupyter environment.**
 
