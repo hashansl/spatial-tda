@@ -51,47 +51,37 @@ Launch the interactive notebook tutorial for the **leafmap** Python package with
 
 <!-- Check out this excellent article on Medium - [Leafmap a new Python Package for Geospatial data science](https://link.medium.com/HRRKDcynYgb) -->
 
-## Key Features
+## Key Features  
 
-Leafmap offers a wide range of features and capabilities that empower geospatial data scientists, researchers, and developers to unlock the potential of their data. Some of the key features include:
+The **AdjacencySimplex** class and the **compute_persistence** function provide a comprehensive framework for processing geospatial data, constructing simplicial complexes, and performing topological data analysis (TDA). These functionalities enable the study of spatial structures and relationships with a focus on **spatial adjacency, simplicial complexes, and persistent homology**. The key features include:  
 
--   **Creating an interactive map with just one line of code:** Leafmap makes it easy to create an interactive map by providing a simple API that allows you to load and visualize geospatial datasets with minimal coding.
+### **Geospatial Data Processing and Filtering**
+- **Filtering and sorting geospatial data:** The class enables filtering and sorting a GeoDataFrame based on a specified variable. Sorting methods include ascending and descending orders.  
+- **Threshold-based filtering:** Users can define minimum and maximum thresholds to focus on specific data ranges.  
+- **Geospatial integrity maintenance:** The framework ensures that processed data retains its **geometric properties and CRS** for further spatial analysis.  
 
--   **Switching between different mapping backends:** Leafmap supports multiple mapping backends, including ipyleaflet, folium, kepler.gl, pydeck, and bokeh. You can switch between these backends to create maps with different visualization styles and capabilities.
+### **Adjacency Computation and Simplicial Complex Construction**
+- **Computing adjacency relationships:** The class uses spatial joins to identify neighboring geographic entities while removing self-intersections.  
+- **Creating adjacency dictionaries:** The adjacency relationships are stored in a dictionary format, making them easy to use for further computations.  
+- **Generating simplicial complexes:** The class constructs **Vietoris-Rips simplicial complexes** using adjacency relationships, enabling higher-order topological analysis.  
 
--   **Changing basemaps interactively:** Leafmap allows you to change basemaps interactively, providing a variety of options such as OpenStreetMap, Stamen Terrain, CartoDB Positron, and many more.
+### **Persistent Homology and Topological Summaries**
+- **Computing persistence diagrams:** The **compute_persistence** function constructs a **Simplex Tree** using **Gudhi**, assigning filtration values based on the input variable.  
+- **Extracting H0 features (connected components):** The function calculates **zero-dimensional (H0) persistence intervals**, representing connected components in the dataset.  
+- **Handling infinite persistence values:** Infinite intervals are replaced with the **maximum variable value** to ensure finite computations.  
+- **Topological summaries (TDA metrics):** The function computes essential TDA summaries for dimension 0, including:  
+  - **H0 data points:** The number of connected components.  
+  - **Total Lifespan (TL):** The sum of persistence intervals.  
+  - **Average Lifespan (AL):** The mean lifespan of connected components.  
+  - **Total Mid-Lifespan (TML):** The sum of midpoints of persistence intervals.  
+  - **Average Mid-Lifespan (AML):** The average of midpoints of persistence intervals.  
 
--   **Adding XYZ, WMS, and vector tile services:** You can easily add XYZ, WMS, and vector tile services to your map, allowing you to overlay additional geospatial data from various sources.
+### **Efficient Computational Design**
+- **Optimized spatial computations:** The class efficiently processes adjacency relationships, even for large datasets.  
+- **Integration with Pandas, GeoPandas, and Gudhi:** The framework seamlessly works with popular Python libraries for geospatial and topological data analysis.  
+- **Dynamic variable selection:** Users can select any **numerical attribute** to control filtering and sorting.  
 
--   **Displaying vector data:** Leafmap supports various vector data formats, including Shapefile, GeoJSON, GeoPackage, and any vector format supported by GeoPandas. You can load and display vector data on the map, enabling you to visualize and analyze spatial features.
-
--   **Displaying raster data:** Leafmap allows you to load and display raster data, such as GeoTIFFs, on the map. This feature is useful for visualizing satellite imagery, digital elevation models, and other gridded datasets.
-
--   **Creating custom legends and colorbars:** Leafmap provides tools for customizing legends and colorbars on the map, allowing you to represent data values with different colors and corresponding labels.
-
--   **Creating split-panel maps and linked maps:** With Leafmap, you can create split-panel maps to compare different datasets side by side. You can also create linked maps that synchronize interactions between multiple maps, providing a coordinated view of different spatial data.
-
--   **Downloading and visualizing OpenStreetMap data:** Leafmap allows you to download and visualize OpenStreetMap data, providing access to detailed street maps, buildings, and other points of interest.
-
--   **Creating and editing vector data interactively:** Leafmap includes tools for creating and editing vector data interactively on the map. You can draw points, lines, and polygons, and modify them as needed.
-
--   **Searching for geospatial data:** Leafmap provides functionality for searching and accessing geospatial data from sources such as SpatialTemporal Asset Catalogs (STAC), Microsoft Planetary Computer, AWS Open Data Registry, and OpenAerialMap.
-
--   **Inspecting pixel values interactively:** Leafmap allows you to interactively inspect pixel values in raster datasets, helping you analyze and understand the data at a more granular level.
-
--   **Creating choropleth maps and heat maps:** Leafmap supports the creation of choropleth maps, where colors represent different data values for specific geographic areas. You can also create heat maps to visualize data density.
-
--   **Displaying data from a PostGIS database:** Leafmap provides tools for connecting to a PostGIS database and displaying spatial data stored in the database on the map.
-
--   **Creating time series animations:** Leafmap enables the creation of time series animations from both vector and raster data, allowing you to visualize temporal changes in your geospatial datasets.
-
--   **Analyzing geospatial data with whitebox:** Leafmap integrates with WhiteboxTools and whiteboxgui, providing a suite of geospatial analyses, such as hydrological analysis, terrain analysis, and LiDAR processing.
-
--   **Segmenting and classifying remote sensing imagery:** Leafmap integrates the segment-geospatial package, which provides tools for segmenting and classifying remote sensing imagery using deep learning algorithms.
-
--   **Building interactive web apps:** Leafmap supports the development of interactive web applications using frameworks like Voila, Streamlit, and Solara. This allows you to share your geospatial analyses and visualizations with others in a user-friendly web interface.
-
-These features and capabilities make leafmap a powerful tool for geospatial data exploration, analysis, and visualization. Whether you are a beginner or an experienced geospatial data scientist, leafmap provides an accessible and efficient way to work with geospatial data in Python.
+These features make the **AdjacencySimplex** class and **compute_persistence** function **powerful tools for geospatial topological data analysis**, helping researchers explore **spatial connectivity, adjacency structures, and persistent homology in geospatial datasets**. Whether for **epidemiology, environmental studies, urban planning, or regional connectivity analysis**, this framework provides an intuitive and structured approach to **spatial TDA**.
 
 ## Citations
 
