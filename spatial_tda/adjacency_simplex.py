@@ -1,5 +1,7 @@
 import geopandas as gpd
 import pandas as pd
+import gudhi
+import numpy as np
 import spatial_tda.invr as invr
 
 class AdjacencySimplex:
@@ -8,7 +10,7 @@ class AdjacencySimplex:
     compute adjacency relationships, and form a simplicial complex.
     """
     
-    def __init__(self, gdf, variable, threshold=None, filter_method='up'):
+    def __init__(self, geo_dataframe, variable, threshold=None, filter_method='up'):
         """
         Initialize with a GeoDataFrame.
         
@@ -18,12 +20,16 @@ class AdjacencySimplex:
         - threshold: Tuple (min, max) for filtering values within a range.
         - filter_method: Sorting method, either 'up' (descending) or 'down' (ascending).
         """
-        self.gdf = gdf
+        self.gdf = geo_dataframe
         self.variable = variable
         self.filter_method = filter_method
         self.threshold = threshold
+        self.filtered_df = None
+        self.adjacent_counties_dict = None
+        self.merged_df = None
+        self.simplicial_complex = None
 
-    def filter_sort_gdf(self):
+    def filter_sort_gdf(self,return_original=False,return_filtered=False):
         """
         Filter and sort the GeoDataFrame based on the specified variable and method.
         """
@@ -61,7 +67,13 @@ class AdjacencySimplex:
         self.filtered_df = filtered_df
 
         # this returns a filtered dataframe and the original dataframe with the sortedID
-        return filtered_df, gdf
+        if return_original and return_filtered:
+            return gdf, filtered_df
+        elif return_filtered:
+            return filtered_df
+        elif return_original:
+            return gdf
+        
 
     def calculate_adjacent_countries(self):
         """
@@ -95,7 +107,7 @@ class AdjacencySimplex:
         self.adjacent_counties_dict = adjacent_dict
         self.merged_df = merged_df
 
-    def form_simplicial_complex(self):
+    def form_simplicial_complex(self,return_simplicial_complex=False):
         """
         Construct a simplicial complex using adjacency relationships.
         """
@@ -105,4 +117,70 @@ class AdjacencySimplex:
         max_dimension = 3  # Define maximum dimension for the simplicial complex
         simplicial_complex = invr.incremental_vr([], self.adjacent_counties_dict, max_dimension, list(self.adjacent_counties_dict.keys()))
         
-        return simplicial_complex
+        self.simplicial_complex = simplicial_complex
+
+        if return_simplicial_complex:
+            return simplicial_complex
+    
+
+    def compute_persistence(self, summaries=None):
+        """
+        Compute persistence diagrams for the simplicial complex and return selected topological summaries.
+
+        :param summaries: List of summary names to return (e.g., ["H0", "TL", "AL"]). If None, return all.
+        :return: Dictionary with requested summaries.
+        """
+
+        st = gudhi.SimplexTree()
+        st.set_dimension(2)
+
+        for simplex in self.simplicial_complex:
+            if len(simplex) == 1:
+                st.insert([simplex[0]], filtration=0.0)
+
+        for simplex in self.simplicial_complex:
+            if len(simplex) == 2:
+                last_simplex = simplex[-1]
+                filtration_value = self.filtered_df.loc[
+                    self.filtered_df['sortedID'] == last_simplex, self.variable
+                ].values[0]
+                st.insert(simplex, filtration=filtration_value)
+
+        for simplex in self.simplicial_complex:
+            if len(simplex) == 3:
+                last_simplex = simplex[-1]
+                filtration_value = self.filtered_df.loc[
+                    self.filtered_df['sortedID'] == last_simplex, self.variable
+                ].values[0]
+                st.insert(simplex, filtration=filtration_value)
+
+        st.compute_persistence()
+        persistence = st.persistence()
+
+        intervals_dim0 = st.persistence_intervals_in_dimension(0)
+
+        # Replace infinity with the max variable value
+        max_value = self.filtered_df[self.variable].max()
+        intervals_dim0[:, 1][np.isinf(intervals_dim0[:, 1])] = max_value
+
+        # Compute topological summaries
+        H0_data_points = len(intervals_dim0)
+        TL = sum(interval[1] - interval[0] for interval in intervals_dim0)
+        TML = sum((interval[1] + interval[0]) / 2 for interval in intervals_dim0)
+
+        AL = TL / len(intervals_dim0) if len(intervals_dim0) > 0 else 0
+        AML = TML / len(intervals_dim0) if len(intervals_dim0) > 0 else 0
+
+        # Store results in a dictionary
+        results = {
+            "H0": H0_data_points,
+            "TL": TL,
+            "AL": AL,
+            "TML": TML,
+            "AML": AML,
+        }
+
+        # Return only requested summaries
+        if summaries:
+            return {key: results[key] for key in summaries if key in results}
+        return results  # Default: return all summaries
