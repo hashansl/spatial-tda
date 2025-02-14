@@ -32,7 +32,7 @@ The **AdjacencySimplex** class and the **compute_persistence** function provide 
 
 ### **Adjacency Computation and Simplicial Complex Construction**
 - **Computing adjacency relationships:** The class currently uses  the Queen contiguity method to define adjacency, where regions are considered neighbors if they share at least one vertex. However, support for additional adjacency methods will be added soon, providing greater flexibility for geospatial topological analysis.
-- **Generating simplicial complexes:** The class constructs **Adjacency simplicial complexes** using adjacency relationships for both filtering up and filtering down methods, enabling higher-order topological analysis with greater flexibility and precision.
+- **Generating simplicial complexes:** The class constructs **Adjacency simplicial complexes** using adjacency relationships for both **filtering up and filtering down methods**, enabling higher-order topological analysis with greater flexibility and precision.
 
 ### **Persistent Homology and Topological Summaries**
 - **Computing persistence diagrams:** The **compute_persistence** function constructs a Simplex Tree using **Gudhi**, assigning filtration values based on the input variable.
@@ -48,7 +48,7 @@ The **AdjacencySimplex** class and the **compute_persistence** function provide 
 - **Integration with Pandas, GeoPandas, and Gudhi:** The framework seamlessly works with popular Python libraries for geospatial and topological data analysis.  
 - **Dynamic variable selection:** Users can select any **numerical attribute** to control filtering and sorting.  
 
-These features make the AdjacencySimplex class and **compute_persistence** function powerful tools for geospatial topological data analysis, helping researchers explore spatial connectivity, adjacency structures, and persistent homology in geospatial datasets. Whether for epidemiology, environmental studies, urban planning, or regional connectivity analysis**, this framework provides an intuitive and structured approach to **spatial TDA**.
+These features make the AdjacencySimplex class and **compute_persistence** function powerful tools for geospatial topological data analysis, helping researchers explore spatial connectivity, adjacency structures, and persistent homology in geospatial datasets. Whether for epidemiology, environmental studies, urban planning, or regional connectivity analysis, this framework provides an intuitive and structured approach to **spatial TDA**.
 
 ## Citations
 

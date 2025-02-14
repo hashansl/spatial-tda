@@ -1,5 +1,5 @@
 site_name: spatial-tda
-site_description: Python Boilerplate contains all the boilerplate you need to create a Python package.
+site_description: A Python package for Topological Data Analysis (TDA) in spatial data.
 site_author: hashansl
 site_url: https://hashansl.github.io/spatial-tda
 repo_url: https://github.com/hashansl/spatial-tda
@@ -82,7 +82,7 @@ nav:
     - Examples:
         - examples/intro.ipynb
     - API Reference:
-          - spatial_tda module: spatial_tda.md
-          - common module: common.md
-          - adjacency_simplex: adjacency_simplex.md
+        #   - spatial_tda module: spatial_tda.md
+        #   - common module: common.md
+        #   - adjacency_simplex: adjacency_simplex.md
           
