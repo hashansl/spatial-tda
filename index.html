@@ -319,24 +319,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Acknowledgments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#statement-of-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      Statement of Need
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -749,24 +731,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#acknowledgments" class="md-nav__link">
-    <span class="md-ellipsis">
-      Acknowledgments
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#statement-of-need" class="md-nav__link">
-    <span class="md-ellipsis">
-      Statement of Need
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       Usage
@@ -873,44 +837,26 @@
 <li>Free software: <a href="https://opensource.org/licenses/MIT">MIT license</a></li>
 </ul>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<!-- **Leafmap** is a Python package for interactive mapping and geospatial analysis with minimal coding in a Jupyter environment. It is a spin-off project of the [geemap](https://geemap.org) Python package, which was designed specifically to work with [Google Earth Engine](https://earthengine.google.com) (GEE). However, not everyone in the geospatial community has access to the GEE cloud computing platform. Leafmap is designed to fill this gap for non-GEE users. It is a free and open-source Python package that enables users to analyze and visualize geospatial data with minimal coding in a Jupyter environment, such as Google Colab, Jupyter Notebook, JupyterLab, and [marimo](https://github.com/marimo-team/marimo). Leafmap is built upon several open-source packages, such as [folium](https://github.com/python-visualization/folium) and [ipyleaflet](https://github.com/jupyter-widgets/ipyleaflet) (for creating interactive maps), [WhiteboxTools](https://github.com/jblindsay/whitebox-tools) and [whiteboxgui](https://github.com/opengeos/whiteboxgui) (for analyzing geospatial data), and [ipywidgets](https://github.com/jupyter-widgets/ipywidgets) (for designing interactive graphical user interfaces [GUIs]). Leafmap has a toolset with various interactive tools that allow users to load vector and raster data onto the map without coding. In addition, users can use the powerful analytical backend (i.e., WhiteboxTools) to perform geospatial analysis directly within the leafmap user interface without writing a single line of code. The WhiteboxTools library currently contains **500+** tools for advanced geospatial analysis, such as [GIS Analysis](https://jblindsay.github.io/wbt_book/available_tools/gis_analysis.html), [Geomorphometric Analysis](https://jblindsay.github.io/wbt_book/available_tools/geomorphometric_analysis.html), [Hydrological Analysis](https://jblindsay.github.io/wbt_book/available_tools/hydrological_analysis.html), [LiDAR Data Analysis](https://jblindsay.github.io/wbt_book/available_tools/lidar_tools.html), [Mathematical and Statistical Analysis](https://jblindsay.github.io/wbt_book/available_tools/mathand_stats_tools.html), and [Stream Network Analysis](https://jblindsay.github.io/wbt_book/available_tools/stream_network_analysis.html). -->
-
-<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
-<p>This project is supported by Amazon Web Services (<a href="https://aws.amazon.com">AWS</a>).</p>
-<h2 id="statement-of-need">Statement of Need<a class="headerlink" href="#statement-of-need" title="Permanent link">&para;</a></h2>
-<!-- There is a plethora of Python packages for geospatial analysis, such as [geopandas](https://geopandas.org) for vector data analysis and [xarray](https://docs.xarray.dev) for raster data analysis. As listed at [pyviz.org](https://pyviz.org), there are also many options for plotting data on a map in Python, ranging from libraries focused specifically on maps like [ipyleaflet](https://ipyleaflet.readthedocs.io) and [folium](https://python-visualization.github.io/folium) to general-purpose plotting tools that also support geospatial data types, such as [hvPlot](https://hvplot.pyviz.org), [bokeh](http://bokeh.org), and [plotly](https://plotly.com/python). While these tools provide powerful capabilities, displaying geospatial data from different file formats on an interactive map and performing basic analyses can be challenging, especially for users with limited coding skills. Furthermore, many tools lack bi-directional communication between the frontend (browser) and the backend (Python), limiting their interactivity and usability for exploring map data. -->
-
-<p>Leafmap addresses these challenges by leveraging the bidirectional communication provided by ipyleaflet, enabling users to load and visualize geospatial datasets with just one line of code. Leafmap also provides an interactive graphical user interface (GUI) for loading geospatial datasets without any coding. It is designed for anyone who wants to analyze and visualize geospatial data interactively in a Jupyter environment, making it particularly accessible for novice users with limited programming skills. Advanced programmers can also benefit from leafmap for geospatial data analysis and building interactive web applications.</p>
+<p><strong>Spatial-TDA</strong> is a Python package designed for extracting topological information from spatial data with minimal coding. It provides an intuitive framework for applying <strong>topological data analysis (TDA)</strong> to geospatial datasets, enabling researchers and analysts to explore <strong>spatial connectivity, adjacency relationships, and persistent homology</strong> efficiently. Built on GeoPandas, Gudhi, and Matplotlib, the package integrates seamless workflows for adjacency detection, simplicial complex construction, and persistent homology computation while maintaining geospatial integrity. With automatic adjacency extraction, <strong>Adjacency simplicial complex formation(Filtering up/ Filtering down)</strong>, and topological visualization tools, <strong>Spatial-TDA</strong> simplifies geospatial TDA workflows, making it ideal for applications in epidemiology, environmental studies and spatial network analysis. Through a combination of computational efficiency and easy-to-use functions, <strong>Spatial-TDA</strong> bridges the gap between geospatial analytics and topological insights, enabling users to quantify and visualize higher-order spatial structures** with just a few lines of code.</p>
 <h2 id="usage">Usage<a class="headerlink" href="#usage" title="Permanent link">&para;</a></h2>
-<p>Launch the interactive notebook tutorial for the <strong>leafmap</strong> Python package with Amazon SageMaker Studio Lab, Microsoft Planetary Computer, Google Colab, or Binder:</p>
-<!-- [![image](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/opengeos/leafmap/blob/master/examples/notebooks/00_key_features.ipynb)
-[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/leafmap/blob/master)
-[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/opengeos/leafmap/HEAD) -->
-
-<!-- Check out this excellent article on Medium - [Leafmap a new Python Package for Geospatial data science](https://link.medium.com/HRRKDcynYgb) -->
-
+<p>Launch the interactive notebook tutorial for the <strong>spatial-tda</strong> Python package with Google Colab:(upcoming)</p>
 <h2 id="key-features">Key Features<a class="headerlink" href="#key-features" title="Permanent link">&para;</a></h2>
 <p>The <strong>AdjacencySimplex</strong> class and the <strong>compute_persistence</strong> function provide a comprehensive framework for processing geospatial data, constructing simplicial complexes, and performing topological data analysis (TDA). These functionalities enable the study of spatial structures and relationships with a focus on <strong>spatial adjacency, simplicial complexes, and persistent homology</strong>. The key features include:  </p>
 <h3 id="geospatial-data-processing-and-filtering"><strong>Geospatial Data Processing and Filtering</strong><a class="headerlink" href="#geospatial-data-processing-and-filtering" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Filtering and sorting geospatial data:</strong> The class enables filtering and sorting a GeoDataFrame based on a specified variable. Sorting methods include ascending and descending orders.  </li>
 <li><strong>Threshold-based filtering:</strong> Users can define minimum and maximum thresholds to focus on specific data ranges.  </li>
-<li><strong>Geospatial integrity maintenance:</strong> The framework ensures that processed data retains its <strong>geometric properties and CRS</strong> for further spatial analysis.  </li>
+<li><strong>Geospatial integrity maintenance:</strong> The framework ensures that processed data retains its geometric properties and CRS for further spatial analysis.  </li>
 </ul>
 <h3 id="adjacency-computation-and-simplicial-complex-construction"><strong>Adjacency Computation and Simplicial Complex Construction</strong><a class="headerlink" href="#adjacency-computation-and-simplicial-complex-construction" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Computing adjacency relationships:</strong> The class uses spatial joins to identify neighboring geographic entities while removing self-intersections.  </li>
-<li><strong>Creating adjacency dictionaries:</strong> The adjacency relationships are stored in a dictionary format, making them easy to use for further computations.  </li>
-<li><strong>Generating simplicial complexes:</strong> The class constructs <strong>Vietoris-Rips simplicial complexes</strong> using adjacency relationships, enabling higher-order topological analysis.  </li>
+<li><strong>Computing adjacency relationships:</strong> The class currently uses  the Queen contiguity method to define adjacency, where regions are considered neighbors if they share at least one vertex. However, support for additional adjacency methods will be added soon, providing greater flexibility for geospatial topological analysis.</li>
+<li><strong>Generating simplicial complexes:</strong> The class constructs <strong>Adjacency simplicial complexes</strong> using adjacency relationships for both filtering up and filtering down methods, enabling higher-order topological analysis with greater flexibility and precision.</li>
 </ul>
 <h3 id="persistent-homology-and-topological-summaries"><strong>Persistent Homology and Topological Summaries</strong><a class="headerlink" href="#persistent-homology-and-topological-summaries" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Computing persistence diagrams:</strong> The <strong>compute_persistence</strong> function constructs a <strong>Simplex Tree</strong> using <strong>Gudhi</strong>, assigning filtration values based on the input variable.  </li>
-<li><strong>Extracting H0 features (connected components):</strong> The function calculates <strong>zero-dimensional (H0) persistence intervals</strong>, representing connected components in the dataset.  </li>
-<li><strong>Handling infinite persistence values:</strong> Infinite intervals are replaced with the <strong>maximum variable value</strong> to ensure finite computations.  </li>
+<li><strong>Computing persistence diagrams:</strong> The <strong>compute_persistence</strong> function constructs a Simplex Tree using <strong>Gudhi</strong>, assigning filtration values based on the input variable.</li>
 <li><strong>Topological summaries (TDA metrics):</strong> The function computes essential TDA summaries for dimension 0, including:  </li>
-<li><strong>H0 data points:</strong> The number of connected components.  </li>
-<li><strong>Total Lifespan (TL):</strong> The sum of persistence intervals.  </li>
+<li><strong>Total Lifespan (TL):</strong> The sum of persistence intervals. </li>
 <li><strong>Average Lifespan (AL):</strong> The mean lifespan of connected components.  </li>
 <li><strong>Total Mid-Lifespan (TML):</strong> The sum of midpoints of persistence intervals.  </li>
 <li><strong>Average Mid-Lifespan (AML):</strong> The average of midpoints of persistence intervals.  </li>
@@ -921,7 +867,7 @@
 <li><strong>Integration with Pandas, GeoPandas, and Gudhi:</strong> The framework seamlessly works with popular Python libraries for geospatial and topological data analysis.  </li>
 <li><strong>Dynamic variable selection:</strong> Users can select any <strong>numerical attribute</strong> to control filtering and sorting.  </li>
 </ul>
-<p>These features make the <strong>AdjacencySimplex</strong> class and <strong>compute_persistence</strong> function <strong>powerful tools for geospatial topological data analysis</strong>, helping researchers explore <strong>spatial connectivity, adjacency structures, and persistent homology in geospatial datasets</strong>. Whether for <strong>epidemiology, environmental studies, urban planning, or regional connectivity analysis</strong>, this framework provides an intuitive and structured approach to <strong>spatial TDA</strong>.</p>
+<p>These features make the AdjacencySimplex class and <strong>compute_persistence</strong> function powerful tools for geospatial topological data analysis, helping researchers explore spatial connectivity, adjacency structures, and persistent homology in geospatial datasets. Whether for epidemiology, environmental studies, urban planning, or regional connectivity analysis<strong>, this framework provides an intuitive and structured approach to </strong>spatial TDA**.</p>
 <h2 id="citations">Citations<a class="headerlink" href="#citations" title="Permanent link">&para;</a></h2>
 <p>If you find <strong>spatial-tda</strong> useful in your research, please consider citing the following paper to support my work. Thank you for your support.</p>
 
@@ -946,7 +892,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T00:07:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T00:31:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
   </span>
 
     
