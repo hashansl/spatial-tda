@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spatial-tda-topological-data-analysis-with-python" class="md-skip">
+        <a href="#introducing-the-spatial-tda-python-package-for-spatial-topological-data-analysis" class="md-skip">
           Skip to content
         </a>
       
@@ -650,8 +650,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -682,8 +680,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -692,11 +688,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-spatal-tda" class="md-nav__link">
+  <a href="#introducing-the-spatial-tda-python-package-for-spatial-topological-data-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Install Spatal-tda
+      Introducing the spatial-tda Python package for Spatial Topological Data Analysis
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Introducing the spatial-tda Python package for Spatial Topological Data Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -755,8 +766,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -765,11 +774,26 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-spatal-tda" class="md-nav__link">
+  <a href="#introducing-the-spatial-tda-python-package-for-spatial-topological-data-analysis" class="md-nav__link">
     <span class="md-ellipsis">
-      Install Spatal-tda
+      Introducing the spatial-tda Python package for Spatial Topological Data Analysis
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Introducing the spatial-tda Python package for Spatial Topological Data Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#module-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Module Overview
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -798,6 +822,8 @@
   
   
 
+
+  <h1>01 spatial tda intro</h1>
 
 <script>
 (function (global, factory) {
@@ -1241,19 +1267,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="spatial-tda-topological-data-analysis-with-python">Spatial-TDA (Topological Data Analysis) with Python<a class="anchor-link" href="#spatial-tda-topological-data-analysis-with-python">¶</a></h1><p>You can try out spatial-tda by using the cloud-computing platforms below without having to install anything on your computer:</p>
-<!-- [![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/leafmap/blob/master) -->
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="install-spatal-tda">Install Spatal-tda<a class="anchor-link" href="#install-spatal-tda">¶</a></h2>
+<h2 id="introducing-the-spatial-tda-python-package-for-spatial-topological-data-analysis"><strong>Introducing the spatial-tda Python package for Spatial Topological Data Analysis</strong><a class="anchor-link" href="#introducing-the-spatial-tda-python-package-for-spatial-topological-data-analysis">¶</a></h2><p>Uncomment the following line to install <strong>spatial-tda</strong> if needed.</p>
 </div>
 </div>
 </div>
@@ -1281,6 +1295,37 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 <div class="clipboard-copy-txt" id="cell-1"># !pip install spatial-tda</div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=cdafc254">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Currently, this package only supports spatial datasets with polygonal geometries, as the adjacency module is designed to rely on shared boundaries between polygons to construct adjacency simplicial complexes. This structure is essential for accurately capturing spatial relationships and computing topological summaries. Datasets containing point or line geometries are not compatible, as they lack the necessary boundary-sharing properties required for the adjacency-based analysis.</p>
+<ul>
+<li><code>import spatial_tda as tda</code></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=55be0e31">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h3 id="module-overview"><strong>Module Overview</strong><a class="anchor-link" href="#module-overview">¶</a></h3><ul>
+<li><strong>Adjacency Simplex</strong>: Construct adjacency simplicial complexes from polygonal datasets.<ul>
+<li><strong>Topological Summaries</strong>: Compute topological summaries for simplicial complexes.</li>
+</ul>
+</li>
+<li><strong>Future Work</strong>: Extend the package to support point and line geometries.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -1314,7 +1359,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T05:01:17+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T14:11:08+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
   </span>
 
     
