@@ -36,11 +36,11 @@ The **AdjacencySimplex** class and the **compute_persistence** function provide 
 
 ### **Persistent Homology and Topological Summaries**
 - **Computing persistence diagrams:** The **compute_persistence** function constructs a Simplex Tree using **Gudhi**, assigning filtration values based on the input variable.
-- **Topological summaries (TDA metrics):** The function computes essential TDA summaries for dimension zero, including: 
-  - **Total Lifespan (TL):** The sum of persistence intervals. 
-  - **Average Lifespan (AL):** The mean lifespan of connected components.  
-  - **Total Mid-Lifespan (TML):** The sum of midpoints of persistence intervals.  
-  - **Average Mid-Lifespan (AML):** The average of midpoints of persistence intervals.  
+- **Topological summaries (TDA metrics):** The function computes essential TDA summaries for dimension zero, including:  
+   - **Total Lifespan (TL):** The sum of persistence intervals. 
+   - **Average Lifespan (AL):** The mean lifespan of connected components.  
+   - **Total Mid-Lifespan (TML):** The sum of midpoints of persistence intervals.  
+   - **Average Mid-Lifespan (AML):** The average of midpoints of persistence intervals.  
 
 ### **Efficient Computational Design**
 - **Optimized spatial computations:** The class efficiently processes adjacency relationships, even for large datasets.  
@@ -52,4 +52,3 @@ These features make the AdjacencySimplex class and **compute_persistence** funct
 ## Citations
 
 If you find **spatial-tda** useful in your research, please consider citing the following paper to support my work. Thank you for your support.
-
