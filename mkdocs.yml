@@ -50,7 +50,12 @@ plugins:
           execute: True
           allow_errors: false
           ignore: ["conf.py"]
-          execute_ignore: ["*ignore.ipynb"]
+        #   execute_ignore: ["*ignore.ipynb"]
+          execute_ignore: [
+                    "notebooks/00_key_features.ipynb",
+                    "notebooks/01_spatial_tda_intro.ipynb",
+                    "notebooks/02_adjacency_simplex.ipynb"
+                    ]
           
 markdown_extensions:
     - admonition
