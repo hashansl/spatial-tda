@@ -9,7 +9,7 @@
 **A Python package for Topological Data Analysis(TDA) in spatial data.**
 
 -   GitHub repo: <https://github.com/hashansl/spatial-tda>
-<!-- -   Documentation: <https://spatial-tda.org> -->
+-   Documentation: <https://hashansl.github.io/spatial-tda/>
 -   PyPI: <https://pypi.org/project/spatial-tda>
 <!-- -   Conda-forge: <https://anaconda.org/conda-forge/spatial-tda> -->
 -   Free software: [MIT license](https://opensource.org/licenses/MIT)
