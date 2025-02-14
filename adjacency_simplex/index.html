@@ -573,6 +573,115 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Notebooks
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Notebooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/00_key_features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/01_spatial_tda_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    01 spatial tda intro
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebooks/02_adjacency_simplex/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    02 adjacency simplex
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -621,6 +730,15 @@
   <a href="#spatial_tda.adjacency_simplex.AdjacencySimplex.calculate_adjacent_countries" class="md-nav__link">
     <span class="md-ellipsis">
       calculate_adjacent_countries()
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spatial_tda.adjacency_simplex.AdjacencySimplex.compute_persistence" class="md-nav__link">
+    <span class="md-ellipsis">
+      compute_persistence()
     </span>
   </a>
   
@@ -685,7 +803,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 <span class="sd">    compute adjacency relationships, and form a simplicial complex.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geo_dataframe</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Initialize with a GeoDataFrame.</span>
 
@@ -695,12 +813,16 @@ compute adjacency relationships, and form a simplicial complex.</p>
 <span class="sd">        - threshold: Tuple (min, max) for filtering values within a range.</span>
 <span class="sd">        - filter_method: Sorting method, either &#39;up&#39; (descending) or &#39;down&#39; (ascending).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geo_dataframe</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">variable</span> <span class="o">=</span> <span class="n">variable</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">filter_method</span> <span class="o">=</span> <span class="n">filter_method</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">merged_df</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">return_original</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">return_filtered</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Filter and sort the GeoDataFrame based on the specified variable and method.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -738,7 +860,13 @@ compute adjacency relationships, and form a simplicial complex.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filtered_df</span>
 
         <span class="c1"># this returns a filtered dataframe and the original dataframe with the sortedID</span>
-        <span class="k">return</span> <span class="n">filtered_df</span><span class="p">,</span> <span class="n">gdf</span>
+        <span class="k">if</span> <span class="n">return_original</span> <span class="ow">and</span> <span class="n">return_filtered</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">filtered_df</span>
+        <span class="k">elif</span> <span class="n">return_filtered</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">filtered_df</span>
+        <span class="k">elif</span> <span class="n">return_original</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">gdf</span>
+
 
     <span class="k">def</span><span class="w"> </span><span class="nf">calculate_adjacent_countries</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -772,7 +900,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span> <span class="o">=</span> <span class="n">adjacent_dict</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">merged_df</span> <span class="o">=</span> <span class="n">merged_df</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">return_simplicial_complex</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Construct a simplicial complex using adjacency relationships.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -782,7 +910,73 @@ compute adjacency relationships, and form a simplicial complex.</p>
         <span class="n">max_dimension</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Define maximum dimension for the simplicial complex</span>
         <span class="n">simplicial_complex</span> <span class="o">=</span> <span class="n">invr</span><span class="o">.</span><span class="n">incremental_vr</span><span class="p">([],</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span><span class="p">,</span> <span class="n">max_dimension</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
 
-        <span class="k">return</span> <span class="n">simplicial_complex</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span> <span class="o">=</span> <span class="n">simplicial_complex</span>
+
+        <span class="k">if</span> <span class="n">return_simplicial_complex</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">simplicial_complex</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">compute_persistence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">summaries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute persistence diagrams for the simplicial complex and return selected topological summaries.</span>
+
+<span class="sd">        :param summaries: List of summary names to return (e.g., [&quot;H0&quot;, &quot;TL&quot;, &quot;AL&quot;]). If None, return all.</span>
+<span class="sd">        :return: Dictionary with requested summaries.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">st</span> <span class="o">=</span> <span class="n">gudhi</span><span class="o">.</span><span class="n">SimplexTree</span><span class="p">()</span>
+        <span class="n">st</span><span class="o">.</span><span class="n">set_dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="n">simplex</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">filtration</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">last_simplex</span> <span class="o">=</span> <span class="n">simplex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">filtration_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;sortedID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_simplex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable</span>
+                <span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">simplex</span><span class="p">,</span> <span class="n">filtration</span><span class="o">=</span><span class="n">filtration_value</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">last_simplex</span> <span class="o">=</span> <span class="n">simplex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">filtration_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;sortedID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_simplex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable</span>
+                <span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">simplex</span><span class="p">,</span> <span class="n">filtration</span><span class="o">=</span><span class="n">filtration_value</span><span class="p">)</span>
+
+        <span class="n">st</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">()</span>
+        <span class="n">persistence</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">persistence</span><span class="p">()</span>
+
+        <span class="n">intervals_dim0</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">persistence_intervals_in_dimension</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Replace infinity with the max variable value</span>
+        <span class="n">max_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+        <span class="n">intervals_dim0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="n">max_value</span>
+
+        <span class="c1"># Compute topological summaries</span>
+        <span class="n">H0_data_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span>
+        <span class="n">TL</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals_dim0</span><span class="p">)</span>
+        <span class="n">TML</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals_dim0</span><span class="p">)</span>
+
+        <span class="n">AL</span> <span class="o">=</span> <span class="n">TL</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">AML</span> <span class="o">=</span> <span class="n">TML</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+        <span class="c1"># Store results in a dictionary</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;H0&quot;</span><span class="p">:</span> <span class="n">H0_data_points</span><span class="p">,</span>
+            <span class="s2">&quot;TL&quot;</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+            <span class="s2">&quot;AL&quot;</span><span class="p">:</span> <span class="n">AL</span><span class="p">,</span>
+            <span class="s2">&quot;TML&quot;</span><span class="p">:</span> <span class="n">TML</span><span class="p">,</span>
+            <span class="s2">&quot;AML&quot;</span><span class="p">:</span> <span class="n">AML</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Return only requested summaries</span>
+        <span class="k">if</span> <span class="n">summaries</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">summaries</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">results</span><span class="p">}</span>
+        <span class="k">return</span> <span class="n">results</span>  <span class="c1"># Default: return all summaries</span>
 </code></pre></div>
         </details>
 
@@ -803,7 +997,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
 
 <h2 id="spatial_tda.adjacency_simplex.AdjacencySimplex.__init__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geo_dataframe</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">)</span></code>
 
   <span class="doc doc-properties">
       <small class="doc doc-property doc-property-special"><code>special</code></small>
@@ -823,7 +1017,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
         <details class="quote">
           <summary>Source code in <code>spatial_tda/adjacency_simplex.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geo_dataframe</span><span class="p">,</span> <span class="n">variable</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">filter_method</span><span class="o">=</span><span class="s1">&#39;up&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize with a GeoDataFrame.</span>
 
@@ -833,10 +1027,14 @@ compute adjacency relationships, and form a simplicial complex.</p>
 <span class="sd">    - threshold: Tuple (min, max) for filtering values within a range.</span>
 <span class="sd">    - filter_method: Sorting method, either &#39;up&#39; (descending) or &#39;down&#39; (ascending).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">gdf</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gdf</span> <span class="o">=</span> <span class="n">geo_dataframe</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">variable</span> <span class="o">=</span> <span class="n">variable</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">filter_method</span> <span class="o">=</span> <span class="n">filter_method</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="n">threshold</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">merged_df</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span> <span class="o">=</span> <span class="kc">None</span>
 </code></pre></div>
         </details>
     </div>
@@ -904,8 +1102,95 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
 
 
+<h2 id="spatial_tda.adjacency_simplex.AdjacencySimplex.compute_persistence" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">compute_persistence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">summaries</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+
+<a href="#spatial_tda.adjacency_simplex.AdjacencySimplex.compute_persistence" class="headerlink" title="Permanent link">&para;</a></h2>
+
+    <div class="doc doc-contents ">
+
+      <p>Compute persistence diagrams for the simplicial complex and return selected topological summaries.</p>
+<p>:param summaries: List of summary names to return (e.g., ["H0", "TL", "AL"]). If None, return all.
+:return: Dictionary with requested summaries.</p>
+
+        <details class="quote">
+          <summary>Source code in <code>spatial_tda/adjacency_simplex.py</code></summary>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_persistence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">summaries</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute persistence diagrams for the simplicial complex and return selected topological summaries.</span>
+
+<span class="sd">    :param summaries: List of summary names to return (e.g., [&quot;H0&quot;, &quot;TL&quot;, &quot;AL&quot;]). If None, return all.</span>
+<span class="sd">    :return: Dictionary with requested summaries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">st</span> <span class="o">=</span> <span class="n">gudhi</span><span class="o">.</span><span class="n">SimplexTree</span><span class="p">()</span>
+    <span class="n">st</span><span class="o">.</span><span class="n">set_dimension</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">([</span><span class="n">simplex</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">filtration</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">last_simplex</span> <span class="o">=</span> <span class="n">simplex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">filtration_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;sortedID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_simplex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">simplex</span><span class="p">,</span> <span class="n">filtration</span><span class="o">=</span><span class="n">filtration_value</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">simplex</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">simplex</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">last_simplex</span> <span class="o">=</span> <span class="n">simplex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="n">filtration_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="s1">&#39;sortedID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">last_simplex</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">variable</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">st</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">simplex</span><span class="p">,</span> <span class="n">filtration</span><span class="o">=</span><span class="n">filtration_value</span><span class="p">)</span>
+
+    <span class="n">st</span><span class="o">.</span><span class="n">compute_persistence</span><span class="p">()</span>
+    <span class="n">persistence</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">persistence</span><span class="p">()</span>
+
+    <span class="n">intervals_dim0</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">persistence_intervals_in_dimension</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># Replace infinity with the max variable value</span>
+    <span class="n">max_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+    <span class="n">intervals_dim0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">isinf</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])]</span> <span class="o">=</span> <span class="n">max_value</span>
+
+    <span class="c1"># Compute topological summaries</span>
+    <span class="n">H0_data_points</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span>
+    <span class="n">TL</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals_dim0</span><span class="p">)</span>
+    <span class="n">TML</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">interval</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">interval</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">interval</span> <span class="ow">in</span> <span class="n">intervals_dim0</span><span class="p">)</span>
+
+    <span class="n">AL</span> <span class="o">=</span> <span class="n">TL</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">AML</span> <span class="o">=</span> <span class="n">TML</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">intervals_dim0</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+
+    <span class="c1"># Store results in a dictionary</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;H0&quot;</span><span class="p">:</span> <span class="n">H0_data_points</span><span class="p">,</span>
+        <span class="s2">&quot;TL&quot;</span><span class="p">:</span> <span class="n">TL</span><span class="p">,</span>
+        <span class="s2">&quot;AL&quot;</span><span class="p">:</span> <span class="n">AL</span><span class="p">,</span>
+        <span class="s2">&quot;TML&quot;</span><span class="p">:</span> <span class="n">TML</span><span class="p">,</span>
+        <span class="s2">&quot;AML&quot;</span><span class="p">:</span> <span class="n">AML</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Return only requested summaries</span>
+    <span class="k">if</span> <span class="n">summaries</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">summaries</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">results</span><span class="p">}</span>
+    <span class="k">return</span> <span class="n">results</span>  <span class="c1"># Default: return all summaries</span>
+</code></pre></div>
+        </details>
+    </div>
+
+  </div>
+
+
+
+  <div class="doc doc-object doc-method">
+
+
+
 <h2 id="spatial_tda.adjacency_simplex.AdjacencySimplex.filter_sort_gdf" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_original</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">return_filtered</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
 <a href="#spatial_tda.adjacency_simplex.AdjacencySimplex.filter_sort_gdf" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -916,7 +1201,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
         <details class="quote">
           <summary>Source code in <code>spatial_tda/adjacency_simplex.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">filter_sort_gdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">return_original</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span><span class="n">return_filtered</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Filter and sort the GeoDataFrame based on the specified variable and method.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -954,7 +1239,12 @@ compute adjacency relationships, and form a simplicial complex.</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">filtered_df</span> <span class="o">=</span> <span class="n">filtered_df</span>
 
     <span class="c1"># this returns a filtered dataframe and the original dataframe with the sortedID</span>
-    <span class="k">return</span> <span class="n">filtered_df</span><span class="p">,</span> <span class="n">gdf</span>
+    <span class="k">if</span> <span class="n">return_original</span> <span class="ow">and</span> <span class="n">return_filtered</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gdf</span><span class="p">,</span> <span class="n">filtered_df</span>
+    <span class="k">elif</span> <span class="n">return_filtered</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">filtered_df</span>
+    <span class="k">elif</span> <span class="n">return_original</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">gdf</span>
 </code></pre></div>
         </details>
     </div>
@@ -968,7 +1258,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
 
 <h2 id="spatial_tda.adjacency_simplex.AdjacencySimplex.form_simplicial_complex" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></code>
+<code class="highlight language-python"><span class="n">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">return_simplicial_complex</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 
 <a href="#spatial_tda.adjacency_simplex.AdjacencySimplex.form_simplicial_complex" class="headerlink" title="Permanent link">&para;</a></h2>
@@ -979,7 +1269,7 @@ compute adjacency relationships, and form a simplicial complex.</p>
 
         <details class="quote">
           <summary>Source code in <code>spatial_tda/adjacency_simplex.py</code></summary>
-          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+          <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">form_simplicial_complex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">return_simplicial_complex</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Construct a simplicial complex using adjacency relationships.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -989,7 +1279,10 @@ compute adjacency relationships, and form a simplicial complex.</p>
     <span class="n">max_dimension</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Define maximum dimension for the simplicial complex</span>
     <span class="n">simplicial_complex</span> <span class="o">=</span> <span class="n">invr</span><span class="o">.</span><span class="n">incremental_vr</span><span class="p">([],</span> <span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span><span class="p">,</span> <span class="n">max_dimension</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">adjacent_counties_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span>
 
-    <span class="k">return</span> <span class="n">simplicial_complex</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">simplicial_complex</span> <span class="o">=</span> <span class="n">simplicial_complex</span>
+
+    <span class="k">if</span> <span class="n">return_simplicial_complex</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">simplicial_complex</span>
 </code></pre></div>
         </details>
     </div>
