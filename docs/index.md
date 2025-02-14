@@ -1,29 +1,16 @@
 # Welcome to spatial-tda
-<!-- 
-[![image](https://studiolab.sagemaker.aws/studiolab.svg)](https://studiolab.sagemaker.aws/import/github/opengeos/leafmap/blob/master/examples/notebooks/00_key_features.ipynb)
-[![image](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/opengeos/leafmap/blob/master)
-[![image](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/opengeos/leafmap/HEAD)
-[![image](https://img.shields.io/pypi/v/leafmap.svg)](https://pypi.python.org/pypi/leafmap)
-[![image](https://static.pepy.tech/badge/leafmap)](https://pepy.tech/project/leafmap)
-[![Conda Recipe](https://img.shields.io/badge/recipe-leafmap-green.svg)](https://github.com/conda-forge/leafmap-feedstock)
-[![image](https://img.shields.io/conda/vn/conda-forge/leafmap.svg)](https://anaconda.org/conda-forge/leafmap)
-[![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/leafmap.svg)](https://anaconda.org/conda-forge/leafmap)
-[![image](https://github.com/opengeos/leafmap/workflows/docs/badge.svg)](https://leafmap.org)
-[![image](https://github.com/opengeos/leafmap/workflows/Linux%20build/badge.svg)](https://github.com/opengeos/leafmap/actions)
-[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/opengeos/leafmap/master.svg)](https://results.pre-commit.ci/latest/github/opengeos/leafmap/master)
-[![image](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![image](https://img.shields.io/badge/YouTube-Channel-red)](https://youtube.com/@giswqs)
-[![status](https://joss.theoj.org/papers/10.21105/joss.03414/status.svg)](https://doi.org/10.21105/joss.03414) -->
+
 
 [![image](https://img.shields.io/pypi/v/spatial-tda.svg)](https://pypi.python.org/pypi/spatial-tda)
-[![logo](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)
+
+[![image](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)
 
 **A Python package for geospatial analysis and interactive mapping in a Jupyter environment.**
 
 -   GitHub repo: <https://github.com/hashansl/spatial-tda>
-<!-- -   Documentation: <https://leafmap.org> -->
+<!-- -   Documentation: <https://spatial-tda.org> -->
 -   PyPI: <https://pypi.org/project/spatial-tda>
-<!-- -   Conda-forge: <https://anaconda.org/conda-forge/leafmap> -->
+<!-- -   Conda-forge: <https://anaconda.org/conda-forge/spatial-tda> -->
 -   Free software: [MIT license](https://opensource.org/licenses/MIT)
 
 
