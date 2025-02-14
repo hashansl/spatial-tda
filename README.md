@@ -5,7 +5,7 @@
 [![image](https://img.shields.io/conda/vn/conda-forge/spatial-tda.svg)](https://anaconda.org/conda-forge/spatial-tda)
 
 
-**A Python package for geospatial analysis and interactive mapping in a Jupyter environment.**
+**A Python package for Topological Data Analysis(TDA) in spatial data.**
 
 -   GitHub repo: <https://github.com/hashansl/spatial-tda>
 <!-- -   Documentation: <https://spatial-tda.org> -->
@@ -36,8 +36,7 @@ The **AdjacencySimplex** class and the **compute_persistence** function provide 
 
 ### **Persistent Homology and Topological Summaries**
 - **Computing persistence diagrams:** The **compute_persistence** function constructs a Simplex Tree using **Gudhi**, assigning filtration values based on the input variable.
-- **Topological summaries (TDA metrics):** The function computes essential TDA summaries for dimension 0, including:  
-
+- **Topological summaries (TDA metrics):** The function computes essential TDA summaries for dimension zero, including: 
   - **Total Lifespan (TL):** The sum of persistence intervals. 
   - **Average Lifespan (AL):** The mean lifespan of connected components.  
   - **Total Mid-Lifespan (TML):** The sum of midpoints of persistence intervals.  
