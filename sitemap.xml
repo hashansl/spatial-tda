@@ -25,6 +25,10 @@
          <lastmod>2025-02-14</lastmod>
     </url>
     <url>
+         <loc>https://hashansl.github.io/spatial-tda/get-started/</loc>
+         <lastmod>2025-02-14</lastmod>
+    </url>
+    <url>
          <loc>https://hashansl.github.io/spatial-tda/installation/</loc>
          <lastmod>2025-02-14</lastmod>
     </url>
@@ -38,6 +42,10 @@
     </url>
     <url>
          <loc>https://hashansl.github.io/spatial-tda/examples/intro/</loc>
+         <lastmod>2025-02-14</lastmod>
+    </url>
+    <url>
+         <loc>https://hashansl.github.io/spatial-tda/notebooks/00_key_features/</loc>
          <lastmod>2025-02-14</lastmod>
     </url>
 </urlset>
