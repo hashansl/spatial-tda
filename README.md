@@ -4,6 +4,7 @@
 [![image](https://img.shields.io/pypi/v/spatial-tda.svg)](https://pypi.python.org/pypi/spatial-tda)
 [![image](https://img.shields.io/conda/vn/conda-forge/spatial-tda.svg)](https://anaconda.org/conda-forge/spatial-tda)
 
+[![image](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/logo.png)
 
 **A Python package for Topological Data Analysis(TDA) in spatial data.**
 
