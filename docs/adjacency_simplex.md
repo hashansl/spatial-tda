@@ -1,3 +1,4 @@
-# AdjacencySimplex module
+# Adjacency Simplex module
 
-::: spatial_tda.adjacency_simplex.AdjacencySimplex
+::: spatial_tda.adjacency_simplex.AdjacencySimplex 
+     

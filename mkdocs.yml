@@ -88,9 +88,7 @@ nav:
     - Examples:
         - examples/intro.ipynb
     - API Reference:
-          - spatial_tda module: spatial_tda.md
-          - common module: common.md
-          - adjacency_simplex: adjacency_simplex.md
+          - AdjacencySimplex: adjacency_simplex.md
     - Notebooks:
           - notebooks/00_key_features.ipynb
           - notebooks/01_spatial_tda_intro.ipynb
