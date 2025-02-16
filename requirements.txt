@@ -2,3 +2,6 @@ numpy
 geopandas
 pandas
 gudhi
+io
+PIL
+matplotlib
