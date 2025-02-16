@@ -6,7 +6,7 @@ import spatial_tda.invr as invr
 import io
 from PIL import Image
 import matplotlib.pyplot as plt
-from matplotlib.patches import Polygon as MplPolygon
+from matplotlib.patches import Polygon
 
 class AdjacencySimplex:
     """
@@ -248,7 +248,7 @@ class AdjacencySimplex:
                 vertex = edge_or_triangle[0]
                 # geometry = self.filtered_df.iterrows().loc[self.filtered_df.iterrows()['sortedID'] == vertex, 'geometry'].values[0]
                 geometry = self.filtered_df[self.filtered_df['sortedID'] == vertex]['geometry'].values[0]
-                ax.add_patch(MplPolygon(np.array(geometry.exterior.coords), closed=True, color='orange', alpha=0.3))
+                ax.add_patch(Polygon(np.array(geometry.exterior.coords), closed=True, color='orange', alpha=0.3))
                 img = self.fig2img(fig)
                 frames.append(img)
 
@@ -259,7 +259,7 @@ class AdjacencySimplex:
                 frames.append(img)
             elif len(edge_or_triangle) == 3:
                 # Plot a triangle
-                ax.add_patch(plt.MplPolygon([city_coordinates[vertex] for vertex in edge_or_triangle], color='green', alpha=0.2))
+                ax.add_patch(plt.Polygon([city_coordinates[vertex] for vertex in edge_or_triangle], color='green', alpha=0.2))
                 img = self.fig2img(fig)
                 frames.append(img)
 
