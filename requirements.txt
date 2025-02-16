@@ -2,5 +2,5 @@ numpy
 geopandas
 pandas
 gudhi
-PIL
+Pillow
 matplotlib
