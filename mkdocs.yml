@@ -80,13 +80,13 @@ nav:
     - Home: index.md
     - Installation: installation.md
     - Usage: notebooks/00_key_features.ipynb
-    - Get Started: get-started.md
+    # - Get Started: get-started.md
     - Contributing: contributing.md
     - FAQ: faq.md
-    - Changelog: changelog.md
+    # - Changelog: changelog.md
     - Report Issues: https://github.com/hashansl/spatial-tda/issues
-    - Examples:
-        - examples/intro.ipynb
+    # - Examples:
+        # - examples/intro.ipynb
     - API Reference:
           - AdjacencySimplex: adjacency_simplex.md
     - Notebooks:
