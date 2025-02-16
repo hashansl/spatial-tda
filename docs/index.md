@@ -55,4 +55,3 @@ If you find **spatial-tda** useful in your research, please consider citing the 
 
 # Demo
 [![image](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/example_img/adj_simplex_EP_POV_down.gif)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/example_img/adj_simplex_EP_POV_down.gif)
-
