@@ -79,7 +79,7 @@ markdown_extensions:
 nav:
     - Home: index.md
     - Installation: installation.md
-    - Usage: notebooks/00_key_features.ipynb
+    - Usage: notebooks/00_spatial_tda_intro.ipynb
     # - Get Started: get-started.md
     - Contributing: contributing.md
     - FAQ: faq.md
@@ -90,8 +90,7 @@ nav:
     - API Reference:
           - AdjacencySimplex: adjacency_simplex.md
     - Notebooks:
-          - notebooks/00_key_features.ipynb
-          - notebooks/01_spatial_tda_intro.ipynb
-          - notebooks/02_adjacency_simplex.ipynb
+          - notebooks/00_spatial_tda_intro.ipynb
+          - notebooks/01_adjacency_simplex.ipynb
 
           
