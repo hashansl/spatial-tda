@@ -51,7 +51,7 @@ These features make the AdjacencySimplex class and **compute_persistence** funct
 
 ## Citations
 
-If you find **spatial-tda** useful in your research, please consider citing the following paper to support my work. Thank you for your support.
+If you find **spatial-tda** useful in your research, please consider citing the following paper(still working on) to support my work. Thank you for your support.
 
 # Demo
 [![image](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/example_img/adj_simplex_EP_POV_down.gif)](https://raw.githubusercontent.com/hashansl/spatial-tda/main/docs/assets/example_img/adj_simplex_EP_POV_down.gif)

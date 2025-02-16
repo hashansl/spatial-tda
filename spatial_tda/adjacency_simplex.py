@@ -3,6 +3,10 @@ import pandas as pd
 import gudhi
 import numpy as np
 import spatial_tda.invr as invr
+import io
+from PIL import Image
+import matplotlib.pyplot as plt
+from matplotlib.patches import Polygon as MplPolygon
 
 class AdjacencySimplex:
     """
@@ -184,3 +188,91 @@ class AdjacencySimplex:
         if summaries:
             return {key: results[key] for key in summaries if key in results}
         return results  # Default: return all summaries
+    
+    @staticmethod
+    def fig2img(fig):
+        """
+        Convert a Matplotlib figure to a PIL Image.
+
+        Parameters:
+        - fig: A Matplotlib figure.
+
+        Returns:
+        - A PIL Image.
+        """
+        buf = io.BytesIO()
+        fig.savefig(buf, bbox_inches='tight', pad_inches=0)
+        buf.seek(0)
+        img = Image.open(buf)
+        return img
+    
+    def plot_simplicial_complex(self, save_dir=None):
+        """
+        Plot the simplicial complex and create a GIF animation showing its incremental construction.
+
+        For each frame, the base map (self.gdf) is plotted along with labels, then
+        all simplices up to that frame are drawn.
+
+        Parameters:
+        - save_dir: Directory path to save the GIF. If None, saves in the current directory.
+        """
+        if self.simplicial_complex is None:
+            raise ValueError("Run form_simplicial_complex() before calling this method.")
+
+        # Precompute centroids from filtered_df for plotting edges/triangles.
+        city_coordinates = {
+            row['sortedID']: np.array((row['geometry'].centroid.x, row['geometry'].centroid.y))
+            for _, row in self.filtered_df.iterrows()
+        }
+
+        # Create a figure and axis
+        fig, ax = plt.subplots(figsize=(10, 10))
+        ax.set_axis_off() 
+
+        # Plot the original GeoDataFrame without any filtration
+        self.gdf.plot(ax=ax, edgecolor='black', linewidth=0.3, color="white")
+
+        # Plot the centroid of the large square with values
+        for _, row in self.gdf.iterrows():
+            centroid = row['geometry'].centroid
+            text_to_display = f"{row[self.variable]:.2f}"
+            plt.text(centroid.x, centroid.y, text_to_display, fontsize=7, ha='center', color="black")
+        
+
+        frames = []
+        for edge_or_triangle in self.simplicial_complex:
+
+            # color sub regions based on how it enter the simplcial complex in adjacency method
+            if len(edge_or_triangle) == 1:
+
+                vertex = edge_or_triangle[0]
+                # geometry = self.filtered_df.iterrows().loc[self.filtered_df.iterrows()['sortedID'] == vertex, 'geometry'].values[0]
+                geometry = self.filtered_df[self.filtered_df['sortedID'] == vertex]['geometry'].values[0]
+                ax.add_patch(MplPolygon(np.array(geometry.exterior.coords), closed=True, color='orange', alpha=0.3))
+                img = self.fig2img(fig)
+                frames.append(img)
+
+            elif len(edge_or_triangle) == 2:
+                # Plot an edge
+                ax.plot(*zip(*[city_coordinates[vertex] for vertex in edge_or_triangle]), color='red', linewidth=2)
+                img = self.fig2img(fig)
+                frames.append(img)
+            elif len(edge_or_triangle) == 3:
+                # Plot a triangle
+                ax.add_patch(plt.MplPolygon([city_coordinates[vertex] for vertex in edge_or_triangle], color='green', alpha=0.2))
+                img = self.fig2img(fig)
+                frames.append(img)
+
+            #can change above code block
+            plt.close(fig)
+
+        
+        # Define the GIF filename.
+        gif_filename = f'adj_simplex_{self.variable}_{self.filter_method}.gif'
+        
+        if save_dir:
+            gif_filename = f'{save_dir}/{gif_filename}'
+        # Save the frames as a GIF.
+        frames[0].save(gif_filename, save_all=True, append_images=frames[1:],
+                       optimize=False, duration=600, loop=0)
+        print(f"GIF created and saved as {gif_filename}.")
