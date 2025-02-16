@@ -2,7 +2,7 @@
 
 __author__ = """Hashan Fernando"""
 __email__ = "hashan.dan@gmail.com"
-__version__ = "0.1.4"
+__version__ = "0.1.5"
 
 # from .adjacency_simplex import *
 from .adjacency_simplex import AdjacencySimplex
